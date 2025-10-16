@@ -1,6 +1,14 @@
+# CivilHud 🏗️
+
+<p align="center">
+  <img src="./assets/logo-1.png" alt="CivilHud Logo" width="200"/>
+</p>
+
 # CivilHud - Plataforma de Cálculo de Materiales y Licitaciones
 
 CivilHud es una aplicación web completa para ingenieros civiles, arquitectos y profesionales de la construcción que permite calcular materiales de construcción, gestionar licitaciones y conectar con proveedores.
+
+---
 
 ## Características Principales
 
@@ -10,7 +18,9 @@ CivilHud es una aplicación web completa para ingenieros civiles, arquitectos y 
 - **Gestión de Perfil**: Dashboard personalizado para cada tipo de usuario
 - **Tiendas de Materiales**: Directorio de ferreterías y proveedores
 
-## Tecnologías Utilizadas
+---
+
+## 🚀 Tecnologías utilizadas
 
 - **Frontend**: Next.js 15, React 19, TypeScript
 - **Estilos**: Tailwind CSS v4
@@ -19,25 +29,35 @@ CivilHud es una aplicación web completa para ingenieros civiles, arquitectos y 
 - **Autenticación**: Supabase Auth
 - **UI Components**: Radix UI, shadcn/ui
 
+---
+
 ## Requisitos Previos
 
 - Node.js 18.x o superior
 - npm o yarn
 - Cuenta en Supabase (gratuita)
 
-## Instalación Local
+---
 
-### 1. Clonar o Descargar el Proyecto
+## 🛠️ Desarrollo
 
-Si descargaste el ZIP, extráelo en tu carpeta de proyectos.
+### Servidor de desarrollo
 
-### 2. Instalar Dependencias
+```bash
+npm run dev
+```
+Navega a http://localhost:3000/ 🚀. La aplicación se recargará automáticamente al hacer cambios en los archivos fuente.
 
-\`\`\`bash
-npm install
-# o
-yarn install
-\`\`\`
+## 🛠️ Contruccion del proyecto
+
+```bash
+npm run build
+```
+
+Esto compilará el proyecto y almacenará los artefactos en la carpeta dist/.
+El build de producción incluye optimizaciones para rendimiento y velocidad.
+
+---
 
 ### 3. Configurar Supabase
 
@@ -63,13 +83,13 @@ yarn install
 
 1. Copia el archivo `.env.local.example` y renómbralo a `.env.local`:
 
-\`\`\`bash
+```bash
 cp .env.local.example .env.local
-\`\`\`
+```
 
 2. Abre `.env.local` y reemplaza los valores con tus credenciales de Supabase:
 
-\`\`\`env
+```env
 NEXT_PUBLIC_SUPABASE_URL=https://tu-proyecto.supabase.co
 SUPABASE_URL=https://tu-proyecto.supabase.co
 
@@ -85,7 +105,7 @@ POSTGRES_PRISMA_URL=postgresql://...
 POSTGRES_URL_NON_POOLING=postgresql://...
 
 NEXT_PUBLIC_DEV_SUPABASE_REDIRECT_URL=http://localhost:3000
-\`\`\`
+```
 
 ### 4. Configurar la Base de Datos
 
@@ -112,17 +132,17 @@ Ejecuta los scripts SQL en tu proyecto de Supabase:
 
 ### 5. Ejecutar el Proyecto
 
-\`\`\`bash
+```bash
 npm run dev
 # o
 yarn dev
-\`\`\`
+```
 
 La aplicación estará disponible en [http://localhost:3000](http://localhost:3000)
 
 ## Estructura del Proyecto
 
-\`\`\`
+```
 civilhud/
 ├── app/                          # Rutas de Next.js
 │   ├── page.tsx                 # Landing page
@@ -149,7 +169,7 @@ civilhud/
 ├── scripts/                     # Scripts SQL para la base de datos
 └── public/                      # Archivos estáticos
 
-\`\`\`
+```
 
 ## Rutas de la Aplicación
 
@@ -203,39 +223,19 @@ civilhud/
 - `npm run start` - Inicia el servidor de producción
 - `npm run lint` - Ejecuta el linter
 
-## Despliegue en Producción
+## 📊 Modelo de Negocio (Canvas)
 
-### Opción 1: Vercel (Recomendado)
+**Propuesta de valor**
+CivilHud es la integración única de cálculos técnicos y subasta digital en una sola web.
 
-1. Sube tu código a GitHub
-2. Ve a [vercel.com](https://vercel.com)
-3. Importa tu repositorio
-4. Agrega las variables de entorno desde `.env.local`
-5. Despliega
+✅ Ahorro económico y reducción de desperdicios para usuarios.
 
-### Opción 2: Otros Servicios
+✅ Transparencia y acceso a nuevos clientes para ferreterías.
 
-Puedes desplegar en cualquier servicio que soporte Next.js:
-- Netlify
-- Railway
-- Render
-- AWS Amplify
+✅ Inclusión digital de usuarios con y sin conocimientos técnicos.
 
-## Contribuir
+✅ Reducción de la economía informal en el sector construcción.
 
-Si encuentras algún error o tienes sugerencias, por favor abre un issue o pull request.
-
-## Licencia
-
-Este proyecto es de código abierto y está disponible bajo la licencia MIT.
-
-## Soporte
-
-Para preguntas o soporte, contacta a través de:
-- Email: support@civilhud.com
-- Twitter: @civilhud
-- LinkedIn: CivilHud
-
----
-
-Desarrollado con ❤️ para la comunidad de construcción
+<p align="center">
+    <h1 align="center">💡 Construyendo el futuro de la construcción digital en Nicaragua.</h1>
+</p>

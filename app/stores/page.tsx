@@ -38,7 +38,7 @@ export default async function StoresPage() {
                 </div>
                 <div className="flex items-center gap-2 text-sm text-[#8d99ae]">
                   <Phone className="h-4 w-4 flex-shrink-0" />
-                  <span>{store.contact}</span>
+                  <span>{store.phone}</span>
                 </div>
                 <div className="flex flex-wrap gap-2 mt-3">
                   {store.specialties?.map((specialty: string) => (

@@ -1,27 +1,29 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Calculator, Menu, X, MessageSquare } from "lucide-react"
-import { useState, useEffect } from "react"
-import { getSupabaseBrowserClient } from "@/lib/supabase/client"
-import { Badge } from "@/components/ui/badge"
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Calculator, Menu, X, MessageSquare } from "lucide-react";
+import { useState, useEffect } from "react";
+import { getSupabaseBrowserClient } from "@/lib/supabase/client";
+import { Badge } from "@/components/ui/badge";
+import logo from "../assets/logo-1.png";
+import Image from "next/image"
 
 export function Header() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
-  const [unreadCount, setUnreadCount] = useState(0)
-  const supabase = getSupabaseBrowserClient()
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [unreadCount, setUnreadCount] = useState(0);
+  const supabase = getSupabaseBrowserClient();
 
   useEffect(() => {
-    checkAuth()
-  }, [])
+    checkAuth();
+  }, []);
 
   const checkAuth = async () => {
     const {
       data: { user },
-    } = await supabase.auth.getUser()
-    setIsAuthenticated(!!user)
+    } = await supabase.auth.getUser();
+    setIsAuthenticated(!!user);
 
     if (user) {
       // Fetch unread message count
@@ -29,9 +31,9 @@ export function Header() {
         .from("messages")
         .select("*", { count: "exact", head: true })
         .eq("receiver_id", user.id)
-        .eq("read", false)
+        .eq("read", false);
 
-      setUnreadCount(count || 0)
+      setUnreadCount(count || 0);
 
       // Subscribe to message changes
       const channel = supabase
@@ -49,47 +51,65 @@ export function Header() {
               .from("messages")
               .select("*", { count: "exact", head: true })
               .eq("receiver_id", user.id)
-              .eq("read", false)
+              .eq("read", false);
 
-            setUnreadCount(newCount || 0)
-          },
+            setUnreadCount(newCount || 0);
+          }
         )
-        .subscribe()
+        .subscribe();
 
       return () => {
-        supabase.removeChannel(channel)
-      }
+        supabase.removeChannel(channel);
+      };
     }
-  }
+  };
 
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-[#a9b1b2]/20">
       <nav className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2">
-            <div className="w-10 h-10 bg-[#82ca57] rounded-xl flex items-center justify-center">
-              <Calculator className="w-6 h-6 text-white" />
+          <Link href="/" className="flex items-center justify-center gap-2">
+            <div className="w-24 rounded-xl flex items-center justify-center">
+              <Image
+                src={logo}
+                alt="CivilHud Logo"
+              />
             </div>
             <span className="text-2xl font-bold text-[#234766] font-sans">CivilHud</span>
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
-            <Link href="#features" className="text-[#234766] hover:text-[#82ca57] transition-colors font-sans">
+            <Link
+              href="#features"
+              className="text-[#234766] hover:text-[#82ca57] transition-colors font-sans"
+            >
               Características
             </Link>
-            <Link href="#how-it-works" className="text-[#234766] hover:text-[#82ca57] transition-colors font-sans">
+            <Link
+              href="#how-it-works"
+              className="text-[#234766] hover:text-[#82ca57] transition-colors font-sans"
+            >
               Cómo Funciona
             </Link>
-            <Link href="/stores" className="text-[#234766] hover:text-[#82ca57] transition-colors font-sans">
+            <Link
+              href="/stores"
+              className="text-[#234766] hover:text-[#82ca57] transition-colors font-sans"
+            >
               Ferreterías
             </Link>
             {isAuthenticated ? (
               <>
-                <Link href="/calculators" className="text-[#234766] hover:text-[#82ca57] transition-colors font-sans">
+                <Link
+                  href="/calculators"
+                  className="text-[#234766] hover:text-[#82ca57] transition-colors font-sans"
+                >
                   Calculadoras
                 </Link>
-                <Link href="/tenders" className="text-[#234766] hover:text-[#82ca57] transition-colors font-sans">
+                <Link
+                  href="/tenders"
+                  className="text-[#234766] hover:text-[#82ca57] transition-colors font-sans"
+                >
                   Licitaciones
                 </Link>
                 <Link href="/messages" className="relative">
@@ -107,7 +127,9 @@ export function Header() {
                   </Button>
                 </Link>
                 <Link href="/dashboard">
-                  <Button className="bg-[#82ca57] hover:bg-[#82ca57]/90 text-white rounded-xl">Dashboard</Button>
+                  <Button className="bg-[#82ca57] hover:bg-[#82ca57]/90 text-white rounded-xl">
+                    Dashboard
+                  </Button>
                 </Link>
               </>
             ) : (
@@ -121,22 +143,34 @@ export function Header() {
                   </Button>
                 </Link>
                 <Link href="/signup">
-                  <Button className="bg-[#82ca57] hover:bg-[#82ca57]/90 text-white rounded-xl">Get Started</Button>
+                  <Button className="bg-[#82ca57] hover:bg-[#82ca57]/90 text-white rounded-xl">
+                    Get Started
+                  </Button>
                 </Link>
               </>
             )}
           </div>
 
           {/* Mobile Menu Button */}
-          <button className="md:hidden text-[#234766]" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          <button
+            className="md:hidden text-[#234766]"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            {mobileMenuOpen ? (
+              <X className="w-6 h-6" />
+            ) : (
+              <Menu className="w-6 h-6" />
+            )}
           </button>
         </div>
 
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
           <div className="md:hidden mt-4 pb-4 space-y-4">
-            <Link href="#features" className="block text-[#234766] hover:text-[#82ca57] transition-colors font-sans">
+            <Link
+              href="#features"
+              className="block text-[#234766] hover:text-[#82ca57] transition-colors font-sans"
+            >
               Características
             </Link>
             <Link
@@ -145,7 +179,10 @@ export function Header() {
             >
               Cómo Funciona
             </Link>
-            <Link href="/stores" className="block text-[#234766] hover:text-[#82ca57] transition-colors font-sans">
+            <Link
+              href="/stores"
+              className="block text-[#234766] hover:text-[#82ca57] transition-colors font-sans"
+            >
               Ferreterías
             </Link>
             {isAuthenticated ? (
@@ -156,7 +193,10 @@ export function Header() {
                 >
                   Calculadoras
                 </Link>
-                <Link href="/tenders" className="block text-[#234766] hover:text-[#82ca57] transition-colors font-sans">
+                <Link
+                  href="/tenders"
+                  className="block text-[#234766] hover:text-[#82ca57] transition-colors font-sans"
+                >
                   Licitaciones
                 </Link>
                 <Link
@@ -166,7 +206,9 @@ export function Header() {
                   Messages {unreadCount > 0 && `(${unreadCount})`}
                 </Link>
                 <Link href="/dashboard">
-                  <Button className="w-full bg-[#82ca57] hover:bg-[#82ca57]/90 text-white rounded-xl">Dashboard</Button>
+                  <Button className="w-full bg-[#82ca57] hover:bg-[#82ca57]/90 text-white rounded-xl">
+                    Dashboard
+                  </Button>
                 </Link>
               </>
             ) : (
@@ -190,5 +232,5 @@ export function Header() {
         )}
       </nav>
     </header>
-  )
+  );
 }

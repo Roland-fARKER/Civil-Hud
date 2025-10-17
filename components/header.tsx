@@ -137,16 +137,16 @@ export function Header() {
         {mobileMenuOpen && (
           <div className="md:hidden mt-4 pb-4 space-y-4">
             <Link href="#features" className="block text-[#234766] hover:text-[#82ca57] transition-colors font-sans">
-              Features
+              Características
             </Link>
             <Link
               href="#how-it-works"
               className="block text-[#234766] hover:text-[#82ca57] transition-colors font-sans"
             >
-              How It Works
+              Cómo Funciona
             </Link>
             <Link href="/stores" className="block text-[#234766] hover:text-[#82ca57] transition-colors font-sans">
-              Hardware Stores
+              Ferreterías
             </Link>
             {isAuthenticated ? (
               <>
@@ -154,10 +154,10 @@ export function Header() {
                   href="/calculators"
                   className="block text-[#234766] hover:text-[#82ca57] transition-colors font-sans"
                 >
-                  Calculators
+                  Calculadoras
                 </Link>
                 <Link href="/tenders" className="block text-[#234766] hover:text-[#82ca57] transition-colors font-sans">
-                  Tenders
+                  Licitaciones
                 </Link>
                 <Link
                   href="/messages"
@@ -181,7 +181,7 @@ export function Header() {
                 </Link>
                 <Link href="/signup">
                   <Button className="w-full bg-[#82ca57] hover:bg-[#82ca57]/90 text-white rounded-xl">
-                    Get Started
+                    Registrarse
                   </Button>
                 </Link>
               </div>
